@@ -1,7 +1,7 @@
 # A simple graph representing a series of cities and the connections between
 # them.
 
-map = {
+maps = {
     "Seattle": {"San Francisco", "Washington D.C."},
     "San Francisco": {"Seattle", "Los Angeles", "Denver"},
     "Los Angeles": {"San Francisco", "Phoenix"},
@@ -13,7 +13,7 @@ map = {
     "Nashville": {"Kansas City", "Houston", "Miami"},
     "New York": {"Chicago", "Washington D.C."},
     "Washington D.C.": {"Chicago", "Nashville", "Miami", "Seattle"},
-    "Miami": {"Washington D.C.", "Houston", "Nashville"}
+    "Miami": {"Washington D.C.", "Houston", "Nashville"},
 }
 
 DELIVERED = "Delivered"
@@ -69,22 +69,39 @@ map_dij = {
     "San Francisco": {("Seattle", 679), ("Los Angeles", 381), ("Denver", 474)},
     "Los Angeles": {("San Francisco", 381), ("Phoenix", 357)},
     "Phoenix": {("Los Angeles", 357), ("Denver", 586)},
-    "Denver": {("Phoenix", 586), ("San Francisco", 474), ("Houston", 878), ("Kansas City", 557)},
-    "Kansas City": {("Denver", 557), ("Houston", 815), ("Chicago", 412), ("Nashville", 554)},
+    "Denver": {
+        ("Phoenix", 586),
+        ("San Francisco", 474),
+        ("Houston", 878),
+        ("Kansas City", 557),
+    },
+    "Kansas City": {
+        ("Denver", 557),
+        ("Houston", 815),
+        ("Chicago", 412),
+        ("Nashville", 554),
+    },
     "Houston": {("Kansas City", 815), ("Denver", 878)},
     "Chicago": {("Kansas City", 412), ("New York", 712)},
     "Nashville": {("Kansas City", 554), ("Houston", 665), ("Miami", 817)},
     "New York": {("Chicago", 712), ("Washington D.C.", 203)},
-    "Washington D.C.": {("Chicago", 701), ("Nashville", 566), ("Miami", 926), ("Seattle", 1000000)},
-    "Miami": {("Washington D.C.", 926), ("Houston", 483), ("Nashville", 817)}
+    "Washington D.C.": {
+        ("Chicago", 701),
+        ("Nashville", 566),
+        ("Miami", 926),
+        ("Seattle", 1000000),
+    },
+    "Miami": {("Washington D.C.", 926), ("Houston", 483), ("Nashville", 817)},
 }
 
+
 # map is designated as a parameter instead of referencing map_dij directly from the higher scope
-# This allows for the function to be dynamic. 
+# This allows for the function to be dynamic.
 # It is used in the testing examples below on a simpler map.
 def find_shortest_path_dij(map, start, end):
     pass
     # Your code here
+
 
 # PHASE TWO Testing
 # print("BFS:", find_shortest_path("Seattle", "Washington D.C."))  # BFS: ['Seattle', 'Washington D.C.']
@@ -101,7 +118,7 @@ simple_map_dij = {
     "F": {("E", 26), ("A", 75)},
 }
 
-'''
+"""
   A----(75)---F
   | \         |
   |  \        |
@@ -118,7 +135,7 @@ simple_map_dij = {
    (30)    (25)
       \    /
          D
-'''
+"""
 
 # PHASE TWO Testing with simpler map
 # print("Dij:", find_shortest_path_dij(simple_map_dij, "A", "B"))  # Dij: ['A', 'B']
