@@ -11,4 +11,4 @@ class Package(db.Model):
     recipient = db.Column(db.String(255), nullable=False)
     origin = db.Column(db.String(255), nullable=False)
     destination = db.Column(db.String(255), nullable=False)
-    location = db.Column(db.String(255), nullable=False)
+    express = db.Column(db.Boolean, nullable=False)

@@ -1,8 +1,8 @@
 """create packages table
 
-Revision ID: 71e89085119f
+Revision ID: 3edc5627800c
 Revises:
-Create Date: 2023-04-30 12:19:46.442267
+Create Date: 2023-04-30 12:34:23.203112
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = "71e89085119f"
+revision = "3edc5627800c"
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,7 +25,7 @@ def upgrade():
         sa.Column("recipient", sa.String(length=255), nullable=False),
         sa.Column("origin", sa.String(length=255), nullable=False),
         sa.Column("destination", sa.String(length=255), nullable=False),
-        sa.Column("location", sa.String(length=255), nullable=False),
+        sa.Column("express", sa.Boolean(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
     # ### end Alembic commands ###

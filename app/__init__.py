@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template, url_for
 from .shipping_form import ShippingForm
 from .config import Config
 from flask_migrate import Migrate
-from .models import db
+from .models import db, Package
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -19,5 +19,16 @@ def index():
 def new_package():
     form = ShippingForm()
     if form.validate_on_submit():
-        return redirect(url_for(".index"))
+        data = form.data
+        print(data)
+        new_package = Package(
+            sender=data["sender"],
+            recipient=data["recipient"],
+            origin=data["origin"],
+            destination=data["destination"],
+            location=data["origin"],
+        )
+        db.session.add(new_package)
+        db.session.commit()
+        return redirect("/")
     return render_template("shipping_request.html", form=form)
