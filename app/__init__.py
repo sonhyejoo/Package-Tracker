@@ -26,7 +26,7 @@ def new_package():
             recipient=data["recipient"],
             origin=data["origin"],
             destination=data["destination"],
-            location=data["origin"],
+            express=data["express"],
         )
         db.session.add(new_package)
         db.session.commit()
